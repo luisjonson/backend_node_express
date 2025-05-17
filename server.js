@@ -1,19 +1,21 @@
 const express = require('express');
-const UsuariosRotas = require('./routes/UsuariosRotas');
+const UsuariosRotas = require('./src/routes/UsuariosRotas');
 
 // const host = "localhost"
 const PORT = process.env.PORT || 3000;
 const app = express();
+//Faz com que o express aceite as requisições do json.
+app.use(express.json());
 
 app.use(UsuariosRotas);
 
 
 app.get('/', (request, response) =>{
-    return response.status(200).send("res.send('Servidor Express no ar!'")
+    return response.status(200).send("Servidor Express no ar!")
 });
 
 
 
 app.listen(PORT,() =>{
-    console.log(`Servidor exercultando na porta ${PORT}`)
+    console.log(`Servidor exercultando na porta http://localhost:${PORT}`)
 })
