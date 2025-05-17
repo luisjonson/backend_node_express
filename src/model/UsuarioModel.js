@@ -2,19 +2,16 @@ const { response } = require("express");
 
 class UsuarioModel {
 
-    static lista = [
-        {
-            nome: "adimin",
-            login: "admin"
-
-        }
+    static lista = [      
     ];
 
     static listar() {
         return UsuarioModel.lista;
     }
 
-    static consultarPorId() {
+    static consultarPorId(id) {
+        const dados = UsuarioModel.lista.filter(item => item.id === id);
+        return dados;
 
     }
 
@@ -22,12 +19,15 @@ class UsuarioModel {
         UsuarioModel.lista.push(data)
     }
 
-    static atualizar() {
+    static atualizar(id, data) {
 
+        const indice = UsuarioModel.lista.findIndex(item => item.id == id);
+        UsuarioModel.lista[indice] = data;
     }
 
-    static deletar() {
-
+    static deletar(id) {
+         const dados = UsuarioModel.lista.filter(item => item.id != id);
+         return UsuarioModel.lista = dados;
     }
 }
 
