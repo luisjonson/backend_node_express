@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 class UsuarioModel {
 
     static lista = [      
@@ -31,4 +29,4 @@ class UsuarioModel {
     }
 }
 
-module.exports = UsuarioModel;
+export default UsuarioModel;

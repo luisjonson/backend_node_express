@@ -1,5 +1,6 @@
-const express = require('express');
-const UsuariosRotas = require('./src/routes/UsuariosRotas');
+import  express from 'express'
+import  UsuariosRotas from'./src/routes/UsuariosRotas.js';
+import PostRotas from './src/routes/PostRotas.js';
 
 // const host = "localhost"
 const PORT = process.env.PORT || 3000;
@@ -8,6 +9,7 @@ const app = express();
 app.use(express.json());
 
 app.use(UsuariosRotas);
+app.use(PostRotas);
 
 
 app.get('/', (request, response) =>{

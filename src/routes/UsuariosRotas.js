@@ -1,5 +1,5 @@
-const express = require ('express');
-const UsuariosController = require('../controllers/UsuariosController');
+import express from 'express';
+import UsuariosController from '../controllers/UsuariosController.js';
 const UsuariosRotas = express.Router();
 
 
@@ -11,4 +11,4 @@ UsuariosRotas.get('/users', usuarioController.listar);
 UsuariosRotas.put('/users/:id', usuarioController.atualizar);
 UsuariosRotas.delete('/users/:id', usuarioController.deletar);
 
-module.exports = UsuariosRotas;
+export default UsuariosRotas;
