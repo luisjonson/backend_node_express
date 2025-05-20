@@ -1,6 +1,5 @@
-import  express from 'express'
-import  UsuariosRotas from'./src/routes/UsuariosRotas.js';
-import PostRotas from './src/routes/PostRotas.js';
+import express from 'express';
+import RotasPrivadas from './src/routes/RotasPrivadas.js';
 
 // const host = "localhost"
 const PORT = process.env.PORT || 3000;
@@ -8,8 +7,7 @@ const app = express();
 //Faz com que o express aceite as requisições do json.
 app.use(express.json());
 
-app.use(UsuariosRotas);
-app.use(PostRotas);
+app.use(RotasPrivadas);
 
 
 app.get('/', (request, response) =>{
