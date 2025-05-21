@@ -1,5 +1,6 @@
 import express from 'express';
 import RotasPrivadas from './src/routes/RotasPrivadas.js';
+import RotasPublicas from './src/routes/RotasPublicas.js';
 
 // const host = "localhost"
 const PORT = process.env.PORT || 3000;
@@ -8,6 +9,7 @@ const app = express();
 app.use(express.json());
 
 app.use(RotasPrivadas);
+app.use(RotasPublicas);
 
 
 app.get('/', (request, response) =>{

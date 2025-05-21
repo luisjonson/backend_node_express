@@ -1,8 +1,17 @@
 class UsuarioModel {
 
-    static lista = [      
+    static lista = [
+        {
+        nome: "admin",
+        Login: "admin",
+        senha: "123"
+        }
     ];
 
+    static login(login, senha) {
+       const indice = UsuarioModel.lista.findIndex(item => item.Login == login && item.senha == senha);
+       return UsuarioModel.lista[indice];
+    }
     static listar() {
         return UsuarioModel.lista;
     }
