@@ -1,5 +1,6 @@
 import express from 'express';
 import AuthControlle from '../controllers/AuthController.js';
+import jwt from 'jsonwebtoken';
 
 const RotasPublicas = express.Router();
 
@@ -9,8 +10,9 @@ RotasPublicas.post('/login', (request, response) => {
     const dados = auth.login(login, senha)
 
     if(dados){
+        const token = jwt.sign(dados,'54163513213bnjkjkjbg1325gf13');
         return response.status(200).json({
-            token: dados
+            token: token
         })
     }
 
