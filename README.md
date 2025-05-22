@@ -14,3 +14,6 @@ node server.js
 
 ## Ultilizando o Jsonwebtoken para gera tokend ealtentição.
 ## npm install jsonwebtoken
+
+# Ultilizando o **dotenv** para carregar as variavel de ambiente 
+## npm install dotenv
