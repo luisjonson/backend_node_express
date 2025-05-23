@@ -2,6 +2,7 @@ import express from 'express';
 import UsuariosRotas from './UsuariosRotas.js';
 import PostRotas from './PostRotas.js';
 import jwt from 'jsonwebtoken';
+import 'dotenv/config'
 
 const RotasPrivadas = express.Router();
 
@@ -12,7 +13,7 @@ RotasPrivadas.use((request, response, next) => {
     if (request.headers.token) {
         const {token} = request.headers;
         try{
-            jwt.verify(token,'54163513213bnjkjkjbg1325gf13')
+            jwt.verify(token, process.env.APP_KEY_TOKEN);
             auth=true
 
         }catch(e){
