@@ -6,7 +6,7 @@ const connection = new Sequelize(process.env.DATABASE, process.env.DATABASE_USER
     host: process.env.DATABASE_HOST,
     dialect: 'mysql',
     port: process.env.DATABASE_PORT,
-    logging: false
+    // logging: (msg) => console.debug('SQL:', msg)
 });
 
 export default connection;
