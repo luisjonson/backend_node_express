@@ -1,7 +1,8 @@
-import express from 'express';
 import UsuariosRotas from './UsuariosRotas.js';
 import PostRotas from './PostRotas.js';
+import TagsRotas from './RotasTags.js';
 import jwt from 'jsonwebtoken';
+import express from 'express';
 import 'dotenv/config'
 
 const RotasPrivadas = express.Router();
@@ -31,6 +32,7 @@ RotasPrivadas.use((request, response, next) => {
 
 RotasPrivadas.use(UsuariosRotas);
 RotasPrivadas.use(PostRotas);
+RotasPrivadas.use(TagsRotas);
 
 
 export default RotasPrivadas
