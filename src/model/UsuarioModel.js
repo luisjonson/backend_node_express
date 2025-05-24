@@ -1,41 +1,80 @@
-class UsuarioModel {
+import { DataTypes, Model } from "sequelize";
+import connection from "../config/database.js";
 
-    static lista = [
-        {
-        nome: "admin",
-        Login: "admin",
-        senha: "123"
-        }
-    ];
+class UsuarioModel extends Model {}
 
-    static login(login, senha) {
-       const indice = UsuarioModel.lista.findIndex(item => item.Login == login && item.senha == senha);
-       return UsuarioModel.lista[indice];
-    }
-    static listar() {
-        return UsuarioModel.lista;
-    }
 
-    static consultarPorId(id) {
-        const dados = UsuarioModel.lista.filter(item => item.id === id);
-        return dados;
+UsuarioModel.init({
+    
+    nome: {
+        field: 'usenome',
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    email: {
+        field: 'useemail',
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    senha: {
+        field: 'usesenha',
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    termo: {
+        field: 'usetermo',
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
+    ativo: {
+        field: 'useativo',
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
+}, {
+    tableName: 'tbusuario',
+    sequelize: connection,
+});
 
-    }
 
-    static criar(data) {
-        UsuarioModel.lista.push(data)
-    }
+// class UsuarioModel {
 
-    static atualizar(id, data) {
+//     static lista = [
+//         {
+//         nome: "admin",
+//         Login: "admin",
+//         senha: "123"
+//         }
+//     ];
 
-        const indice = UsuarioModel.lista.findIndex(item => item.id == id);
-        UsuarioModel.lista[indice] = data;
-    }
+//     static login(login, senha) {
+//        const indice = UsuarioModel.lista.findIndex(item => item.Login == login && item.senha == senha);
+//        return UsuarioModel.lista[indice];
+//     }
+//     static listar() {
+//         return UsuarioModel.lista;
+//     }
 
-    static deletar(id) {
-         const dados = UsuarioModel.lista.filter(item => item.id != id);
-         return UsuarioModel.lista = dados;
-    }
-}
+//     static consultarPorId(id) {
+//         const dados = UsuarioModel.lista.filter(item => item.id === id);
+//         return dados;
+
+//     }
+
+//     static criar(data) {
+//         UsuarioModel.lista.push(data)
+//     }
+
+//     static atualizar(id, data) {
+
+//         const indice = UsuarioModel.lista.findIndex(item => item.id == id);
+//         UsuarioModel.lista[indice] = data;
+//     }
+
+//     static deletar(id) {
+//          const dados = UsuarioModel.lista.filter(item => item.id != id);
+//          return UsuarioModel.lista = dados;
+//     }
+// }
 
 export default UsuarioModel;
