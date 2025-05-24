@@ -1,5 +1,5 @@
-import UsuarioModel from '../model/UsuarioModel.js'
-import bcrypt from 'bcrypt';
+import UsuarioModel from '../model/UsuarioModel.js';
+import { criptoPassword } from '../utils/Utils.js';
 
 class UsuariosController {
     async listar(request, response) {
@@ -20,23 +20,30 @@ class UsuariosController {
         return response.json(dados);
     }
 
-    criar(request, response) {
-        const body = request.body;
-        if (body.senha) {
-            const saltRounds = parseInt(process.env.SALT_ROUNDS, PARSE_INT_BASE);
-            const salt = bcrypt.genSaltSync(saltRounds);
-            const hash = bcrypt.hashSync(body.senha, salt);
-            body.senha = hash;
-        }
+    async criar(request, response) {
+        try {
+            await this.isExisteEmailCadastrado(request);
 
-        UsuarioModel.create(body);
-        return response.status(201).json({
-            message: "Usuário cadastrado com sucesso"
-        })
+            const body = request.body;
+            if (body.senha) {
+                body.senha = await criptoPassword(body.senha);
+            }
+
+            UsuarioModel.create(body);
+            return response.status(201).json({
+                message: "Usuário cadastrado com sucesso"
+            })
+
+        } catch (error) {
+            return response.status(500).json({
+                // message: "Erro ao cadastrar o usuário",
+                error: error.message
+            });
+        }
     }
 
     async atualizar(request, response) {
-        const id = parseInt(request.params.id, 10); 
+        const id = parseInt(request.params.id, 10);
         const dados = request.body;
 
         try {
@@ -67,10 +74,21 @@ class UsuariosController {
                 return response.status(404).json({ message: "Usuário não encontrado" });
             }
 
-            return  response.json({ message: "Usuário excluído com sucesso" });
+            return response.json({ message: "Usuário excluído com sucesso" });
         } catch (error) {
             console.error(error);
             return response.status(500).json({ message: "Erro ao excluir o usuário" });
+        }
+    }
+
+    async isExisteEmailCadastrado(request) {
+        const email = request.body.email;
+        const usuario = await UsuarioModel.findOne({
+            where: { email: email }
+        });
+
+        if (usuario) {
+            throw new Error('Email já cadastrado');
         }
     }
 }

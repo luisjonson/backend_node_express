@@ -5,7 +5,7 @@ const UsuariosRotas = express.Router();
 
 const usuarioController = new UsuariosController();
 
-UsuariosRotas.post('/users', usuarioController.criar)
+UsuariosRotas.post('/users', (req, res) => usuarioController.criar(req, res))
 UsuariosRotas.get('/users/:id', usuarioController.consultarPorId)
 UsuariosRotas.get('/users', usuarioController.listar);
 UsuariosRotas.put('/users/:id', usuarioController.atualizar);
