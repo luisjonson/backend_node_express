@@ -22,14 +22,17 @@ class UsuariosController {
 
     async criar(request, response) {
         try {
-            await this.isExisteEmailCadastrado(request);
-
             const body = request.body;
+
+            if(!!await this.isExisteEmailCadastrado(body.email)){
+                return response.status(400).json({ error: 'Email já cadastrado' });
+            }
+            
             if (body.senha) {
                 body.senha = await criptoPassword(body.senha);
             }
 
-            UsuarioModel.create(body);
+            await UsuarioModel.create(body);
             return response.status(201).json({
                 message: "Usuário cadastrado com sucesso"
             })
@@ -81,15 +84,8 @@ class UsuariosController {
         }
     }
 
-    async isExisteEmailCadastrado(request) {
-        const email = request.body.email;
-        const usuario = await UsuarioModel.findOne({
-            where: { email: email }
-        });
-
-        if (usuario) {
-            throw new Error('Email já cadastrado');
-        }
+    async isExisteEmailCadastrado(email) {
+        return await UsuarioModel.findOne({where: { email: email }});
     }
 }
 
