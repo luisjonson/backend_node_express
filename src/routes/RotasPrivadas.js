@@ -1,4 +1,4 @@
-import UsuariosRotas from './UsuariosRotas.js';
+import UserRotas from './UserRotas.js';
 import PostRotas from './PostRotas.js';
 import TagsRotas from './RotasTags.js';
 import jwt from 'jsonwebtoken';
@@ -10,27 +10,19 @@ const RotasPrivadas = express.Router();
 // Middleware para verificar se o usuário está autenticado
 RotasPrivadas.use((request, response, next) => {
 
-    let auth = false;
-    if (request.headers.token) {
-        const {token} = request.headers;
-        try{
-            jwt.verify(token, process.env.APP_KEY_TOKEN);
-            auth=true
-
-        }catch(e){
-            return response.status(403).send("token invalido ou expirado");
-        }
+    const token = request.headers.token;
+    try {
+        jwt.verify(token, process.env.APP_KEY_TOKEN)
+        
+    } catch (jsonwebtokenError) {
+        return response.status(403).json({
+            message: 'Não autorizado 10'
+        })
     }
-    if(auth==false){
-        return response.status(403).send("Acesso negado");
-    }
-    
     next();
 });
 
-
-
-RotasPrivadas.use(UsuariosRotas);
+RotasPrivadas.use(UserRotas);
 RotasPrivadas.use(PostRotas);
 RotasPrivadas.use(TagsRotas);
 
