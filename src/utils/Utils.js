@@ -9,3 +9,11 @@ export const criptoPassword = async (senha) => {
     throw error;
   }
 };
+
+export const compareSenha = async (senha, hashArmazenado) => {
+  return await bcrypt.compare(senha, hashArmazenado);
+}
+
+export const spirationTime = (seconds, minute) => {
+  return Math.floor(Date.now() / 1000) + (seconds * minute)
+}
