@@ -16,7 +16,7 @@ RotasPrivadas.use((request, response, next) => {
         
     } catch (jsonwebtokenError) {
         return response.status(403).json({
-            message: 'Não autorizado 10'
+            message: 'Não autorizado'
         })
     }
     next();
