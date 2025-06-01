@@ -1,10 +1,14 @@
 import { DataTypes, Model } from "sequelize";
-import connection from "../config/database.js";
+import connection from "../config/connection.js";
 
 class TagsModel extends Model {}
 
 TagsModel.init({
-    
+    usernumsequencial: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },    
     nome: {
         type: DataTypes.STRING,
         allowNull: false
