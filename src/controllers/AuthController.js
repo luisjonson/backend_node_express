@@ -25,7 +25,7 @@ class AuthController {
                 id: usuario.usernumsequencial,
                 username: usuario.nome,
                 email: usuario.email,
-                exp: spirationTime(60,1) 
+                exp: spirationTime(60,30) 
             };
 
             const token = jwt.sign(dataToken, process.env.APP_KEY_TOKEN);
