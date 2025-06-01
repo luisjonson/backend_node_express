@@ -1,11 +1,15 @@
 import { DataTypes, Model } from "sequelize";
-import connection from "../config/database.js";
+import connection from "../config/connection.js";
 
-class UsuarioModel extends Model {}
+class UserModel extends Model { }
 
 
-UsuarioModel.init({
-    
+UserModel.init({
+    usernumsequencial: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
     nome: {
         field: 'usenome',
         type: DataTypes.STRING,
@@ -32,8 +36,8 @@ UsuarioModel.init({
         allowNull: false
     },
 }, {
-    tableName: 'tbusuario',
+    tableName: 'tbuser',
     sequelize: connection,
 });
 
-export default UsuarioModel;
+export default UserModel;

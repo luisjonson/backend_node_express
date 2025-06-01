@@ -1,15 +1,15 @@
-import UsuarioModel from '../model/UsuarioModel.js';
+import UserModel from '../model/UserModel.js';
 import { criptoPassword } from '../utils/Utils.js';
 
-class UsuariosController {
+class UserController {
     async listar(request, response) {
-        const dados = await UsuarioModel.findAll();
+        const dados = await UserModel.findAll();
         return response.status(200).json(dados);
     }
 
     async consultarPorId(request, response) {
         const id = parseInt(request.params.id, process.env.PARSE_INT_BASE);
-        const dados = await UsuarioModel.findByPk(id);
+        const dados = await UserModel.findByPk(id);
 
         if (!dados) {
             return response.status(404).json({
@@ -32,7 +32,7 @@ class UsuariosController {
                 body.senha = await criptoPassword(body.senha);
             }
 
-            await UsuarioModel.create(body);
+            await UserModel.create(body);
             return response.status(201).json({
                 message: "Usuário cadastrado com sucesso"
             })
@@ -50,7 +50,7 @@ class UsuariosController {
         const dados = request.body;
 
         try {
-            const [linhasAfetadas] = await UsuarioModel.update(dados, {
+            const [linhasAfetadas] = await UserModel.update(dados, {
                 where: { id: id }
             });
 
@@ -69,7 +69,7 @@ class UsuariosController {
         const id = parseInt(request.params.id, 10);
 
         try {
-            const linhasAfetadas = await UsuarioModel.destroy({
+            const linhasAfetadas = await UserModel.destroy({
                 where: { id: id }
             });
 
@@ -85,8 +85,8 @@ class UsuariosController {
     }
 
     async isExisteEmailCadastrado(email) {
-        return await UsuarioModel.findOne({where: { email: email }});
+        return await UserModel.findOne({where: { email: email }});
     }
 }
 
-export default UsuariosController;
+export default UserController;
