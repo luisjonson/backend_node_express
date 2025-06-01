@@ -10,8 +10,8 @@ app.use(cors());  // ← habilita CORS para todas as origens
 //Faz com que o express aceite as requisições do json.
 app.use(express.json());
 
-app.use(RotasPrivadas);
 app.use(RotasPublicas);
+app.use(RotasPrivadas);
 
 
 app.get('/', (request, response) =>{
