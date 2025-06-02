@@ -1,6 +1,7 @@
 import UserRotas from './UserRotas.js';
 import PostRotas from './PostRotas.js';
 import TagsRotas from './RotasTags.js';
+import RotasCategorias from './RotasCategorias.js'
 import jwt from 'jsonwebtoken';
 import express from 'express';
 import 'dotenv/config'
@@ -9,7 +10,7 @@ const RotasPrivadas = express.Router();
 
 // Middleware para verificar se o usuário está autenticado
 RotasPrivadas.use((request, response, next) => {
-
+    
     const token = request.headers.token;
     try {
         jwt.verify(token, process.env.APP_KEY_TOKEN)
@@ -25,6 +26,7 @@ RotasPrivadas.use((request, response, next) => {
 RotasPrivadas.use(UserRotas);
 RotasPrivadas.use(PostRotas);
 RotasPrivadas.use(TagsRotas);
+RotasPrivadas.use(RotasCategorias);
 
 
 export default RotasPrivadas
