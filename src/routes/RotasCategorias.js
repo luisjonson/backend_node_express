@@ -4,7 +4,6 @@ const RotasCategorias = express.Router();
 
 //começando na rota > vai para o controller > vai para o model > vai para o banco de dados
 const categoriaController = new CategoriaController();
-RotasCategorias.get('/categorias', categoriaController.listar)
 RotasCategorias.post('/categorias', categoriaController.criar)
 RotasCategorias.put('/categorias/:id', categoriaController.atualizar);
 RotasCategorias.delete('/categorias/:id', categoriaController.deletar);
