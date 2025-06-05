@@ -6,7 +6,13 @@ import cors from 'cors';
 // const host = "localhost"
 const PORT = process.env.PORT || 3000;
 const app = express();
-app.use(cors());  // ← habilita CORS para todas as origens
+
+app.use(cors({
+    // porta do seu frontend
+    origin:'http://localhost:5173',
+    // permite cookies
+    credentials: true
+}));  // ← habilita CORS para todas as origens
 //Faz com que o express aceite as requisições do json.
 app.use(express.json());
 

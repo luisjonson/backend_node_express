@@ -17,3 +17,6 @@ node server.js
 
 # Ultilizando o **dotenv** para carregar as variavel de ambiente 
 ## npm install dotenv
+
+# Intalação do cookie-parser para encapculamento de autenticação
+## npm install express cookie-parser

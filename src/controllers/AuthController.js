@@ -1,5 +1,6 @@
 import UserModel from "../model/UserModel.js";
 import { compareSenha, spirationTime } from '../utils/Utils.js';
+import  cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken';
 
 class AuthController {
@@ -30,11 +31,24 @@ class AuthController {
 
             const token = jwt.sign(dataToken, process.env.APP_KEY_TOKEN);
 
-            return response.status(200).json({ token });
+            response.cookie('token', token, {
+                httpOnly: true,
+                secure: false, // true em produção (HTTPS)
+                sameSite: 'lax',
+                maxAge: 3600000
+            });
+
+            return response.status(200).json({msg: 'Seja bem vindo.'});
         } catch (error) {
             return response.status(500).json({ erro: 'Erro interno no login', detalhe: error.message });
         }
     }
+
+    async logout(request, response) {
+        response.clearCookie('token');
+        response.json({ message: 'Deslogado com sucesso' });
+    };
+
 }
 
 export default AuthController;
