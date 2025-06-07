@@ -4,14 +4,18 @@ import TagsRotas from './RotasTags.js';
 import RotasCategorias from './RotasCategorias.js'
 import jwt from 'jsonwebtoken';
 import express from 'express';
+import { extrairToken } from '../utils/Utils.js';
 import 'dotenv/config'
 
 const RotasPrivadas = express.Router();
 
 // Middleware para verificar se o usuário está autenticado
 RotasPrivadas.use((request, response, next) => {
-    
-    const token = request.headers.token;
+    const token = extrairToken(request) // lê o cookie "token"
+    // const token = request.headers.token;
+
+    if(!token) throw response.status(401).json({error: 'Acesso negado.'})
+
     try {
         jwt.verify(token, process.env.APP_KEY_TOKEN)
         
