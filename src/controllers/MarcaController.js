@@ -1,5 +1,4 @@
 import MarcaModel from '../model/MarcaModel.js';
-import { criptoPassword } from '../utils/Utils.js';
 
 class MarcaController {
     async listar(request, response) {
