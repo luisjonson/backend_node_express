@@ -25,20 +25,20 @@ class UserController {
             const body = request.body;
 
             if(!!await this.isExisteEmailCadastrado(body.email)){
-                return response.status(400).json({ error: 'Email já cadastrado' });
+                throw response.status(400).json({ error: 'Email já cadastrado' });
             }
             
             if (body.senha) {
                 body.senha = await criptoPassword(body.senha);
             }
 
-            await UserModel.create(body);
+           const usuario = await UserModel.create(body);
             return response.status(201).json({
-                message: "Usuário cadastrado com sucesso"
+                message: `Usuário cadastrado com sucesso ${usuario.numsequencial}`
             })
 
         } catch (error) {
-            return response.status(500).json({
+            throw response.status(500).json({
                 // message: "Erro ao cadastrar o usuário",
                 error: error.message
             });
@@ -55,13 +55,13 @@ class UserController {
             });
 
             if (linhasAfetadas === 0) {
-                return response.status(404).json({ message: "Usuário não encontrado" });
+                return response.status(404).json({ error: "Usuário não encontrado" });
             }
 
             return response.json({ message: "Usuário atualizado com sucesso" });
         } catch (error) {
             console.error(error);
-            return response.status(500).json({ message: "Erro ao atualizar o usuário" });
+            return response.status(500).json({ error: "Erro ao atualizar o usuário" });
         }
     }
 
@@ -74,13 +74,13 @@ class UserController {
             });
 
             if (linhasAfetadas === 0) {
-                return response.status(404).json({ message: "Usuário não encontrado" });
+                return response.status(404).json({ error: "Usuário não encontrado" });
             }
 
             return response.json({ message: "Usuário excluído com sucesso" });
         } catch (error) {
             console.error(error);
-            return response.status(500).json({ message: "Erro ao excluir o usuário" });
+            return response.status(500).json({ error: "Erro ao excluir o usuário" });
         }
     }
 

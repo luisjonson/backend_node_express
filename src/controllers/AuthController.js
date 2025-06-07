@@ -13,13 +13,13 @@ class AuthController {
             });
 
             if (!usuario) {
-                return response.status(401).json({ erro: 'Usuário ou senha inválidos' });
+                throw response.status(401).json({ erro: 'Usuário ou senha inválidos' });
             }
 
             const senhaConfere = await compareSenha(senha, usuario.senha);
 
             if (!senhaConfere) {
-                return response.status(401).json({ erro: 'Usuário ou senha inválidos' });
+                throw response.status(401).json({ erro: 'Usuário ou senha inválidos' });
             }
 
             const dataToken = {
@@ -37,10 +37,11 @@ class AuthController {
                 sameSite: 'lax',
                 maxAge: 3600000
             });
+            
 
-            return response.status(200).json({msg: 'Seja bem vindo.'});
+            return response.status(200).json({message:'Bem vindo.'})
         } catch (error) {
-            return response.status(500).json({ erro: 'Erro interno no login', detalhe: error.message });
+            throw response.status(500).json({ erro: 'Erro interno no login', detalhe: error.message });
         }
     }
 
