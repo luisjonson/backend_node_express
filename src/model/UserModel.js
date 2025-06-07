@@ -5,7 +5,8 @@ class UserModel extends Model { }
 
 
 UserModel.init({
-    usernumsequencial: {
+    numsequencial: {
+        field: 'usenumsequencial',
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
