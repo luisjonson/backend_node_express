@@ -3,6 +3,7 @@ import PostRotas from './PostRotas.js';
 import TagsRotas from './RotasTags.js';
 import RotasCategorias from './RotasCategorias.js'
 import MarcaRotas from './MarcaRotas.js';
+import ProdutoRotas from './ProdutoRotas.js';
 import jwt from 'jsonwebtoken';
 import express from 'express';
 import { extrairToken } from '../utils/Utils.js';
@@ -33,6 +34,7 @@ RotasPrivadas.use(PostRotas);
 RotasPrivadas.use(TagsRotas);
 RotasPrivadas.use(RotasCategorias);
 RotasPrivadas.use(MarcaRotas);
+RotasPrivadas.use(ProdutoRotas);
 
 
 export default RotasPrivadas
