@@ -126,9 +126,9 @@ class ProdutoController {
     }
 
     async deletar(request, response) {
-        const id = parseInt(request.params.id, process.env.PARSE_INT_BASE);
-
+        
         try {
+            const id = parseInt(request.params.id, process.env.PARSE_INT_BASE);
             const linhasAfetadas = await ProdutoModel.destroy({
                 where: { numsequencial: id }
             });
