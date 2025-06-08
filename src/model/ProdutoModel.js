@@ -1,6 +1,7 @@
 import { DataTypes, Model } from "sequelize";
 import connection from "../config/connection.js";
 import MarcaModel from "./MarcaModel.js";
+import CategoriaModel from "./CategoriaModel.js";
 
 class ProdutoModel extends Model { }
 
@@ -41,8 +42,17 @@ ProdutoModel.init({
       type:DataTypes.INTEGER,
       allowNull:false,
       references:{
-        promodel:"tbmarca",
+        model:"tbmarca",
         key:"marnumsequencial"
+      }
+    },
+    categotia:{
+      field:'procategoria',
+      type:DataTypes.INTEGER,
+      allowNull:false,
+      references:{
+        model:"tbcategoria",
+        key:"catnumsequencial"
       }
     }
 },
@@ -54,6 +64,11 @@ ProdutoModel.init({
 ProdutoModel.belongsTo(MarcaModel,{
   foreignKey: "marca",
   as: "marca_id",
+})
+
+ProdutoModel.belongsTo(CategoriaModel,{
+  foreignKey: "categotia",
+  as: "categotia_id",
 })
 
 export default ProdutoModel;
