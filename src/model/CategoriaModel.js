@@ -16,6 +16,11 @@ CategoriaModel.init({
         type: DataTypes.STRING,
         allowNull: false
     },
+    ativo:{
+      field: 'catativo',
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    }
 },
 {
   tableName: 'tbcategoria',
