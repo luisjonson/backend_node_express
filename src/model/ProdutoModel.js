@@ -1,5 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import connection from "../config/connection.js";
+import MarcaModel from "./MarcaModel.js";
 
 class ProdutoModel extends Model { }
 
@@ -35,10 +36,24 @@ ProdutoModel.init({
       type: DataTypes.DECIMAL(10, 2), // Até 99.999.999,99
       allowNull: true
     },
+    marca:{
+      field:'promarca',
+      type:DataTypes.INTEGER,
+      allowNull:false,
+      references:{
+        promodel:"tbmarca",
+        key:"marnumsequencial"
+      }
+    }
 },
 {
   tableName: 'tbproduto',
   sequelize: connection,
 });
+
+ProdutoModel.belongsTo(MarcaModel,{
+  foreignKey: "marca",
+  as: "marca_id",
+})
 
 export default ProdutoModel;
