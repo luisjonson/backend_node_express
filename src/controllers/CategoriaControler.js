@@ -3,7 +3,7 @@ import CategoriaModel from "../model/CategoriaModel.js";
 class CategoriaController{
     async listar(req, res) {
         let tags = await CategoriaModel.findAll({
-            attributes:['numsequencial','nome']
+            attributes:['numsequencial','nome', 'ativo']
         });
         return res.json(tags);
     }
