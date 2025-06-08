@@ -1,16 +1,65 @@
-# Servidor Express
+# API Express com Swagger
 
-Servidor back-end feito com Node.js e Express.
+Esta é uma API RESTfull construída com Node.js e Express, documentada com Swagger.
 
-## Como rodar localmente
+## Instalação
 
-bash
+1. Clone o repositório
+2. Instale as dependências:
+\`\`\`bash
 npm install
-node server.js
+\`\`\`
+
+## Executando a aplicação
+
+### Modo desenvolvimento (com nodemon):
+\`\`\`bash
+npm run dev
+\`\`\`
+
+### Modo produção:
+\`\`\`bash
+npm start
+\`\`\`
+
+## Acessando a documentação
+
+Após iniciar o servidor, acesse:
+- **Documentação Swagger**: http://localhost:3000/api-docs
+- **API Base**: http://localhost:3000
+
+## Endpoints disponíveis
+
+### Login
+- `Post /login` - autenticação para acesso no sistema 
+
+### Categoria
+- `GET /categorias` - Lista todas as catregorias
+
+## Estrutura do projeto
+
+\`\`\`
+├── index.js        # Arquivo principal
+├── routes/
+│   └── *.js        # Todas as Rotas 
+├── package.json    # Dependências
+└── README.md       # Este arquivo
+\`\`\`
+
+## Tecnologias utilizadas
+
+- **Node.js** - Runtime JavaScript
+- **Express** - Framework web
+- **Swagger JSDoc** - Geração de documentação
+- **Swagger UI Express** - Interface da documentação
+
+
+
+# Servidor Express
+Servidor back-end feito com Node.js e Express.
 
 ### acresentar no package.json para o import do express em ver do require
 ### "type": "module",
-
 
 ## Ultilizando o Jsonwebtoken para gera tokend ealtentição.
 ## npm install jsonwebtoken
