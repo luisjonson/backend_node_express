@@ -7,7 +7,7 @@ const marcaController = new MarcaController();
 
 MarcaRotas.post('/marca', (req, res) => marcaController.criar(req, res))
 MarcaRotas.get('/marca/:id', marcaController.consultarPorId)
-MarcaRotas.get('/marca', marcaController.listar);
+MarcaRotas.get('/marcas', marcaController.listar);
 MarcaRotas.patch('/marca', marcaController.atualizar);
 MarcaRotas.delete('/marca/:id', marcaController.deletar);
 
