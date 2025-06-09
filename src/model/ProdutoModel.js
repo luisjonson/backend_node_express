@@ -54,6 +54,27 @@ ProdutoModel.init({
         model:"tbcategoria",
         key:"catnumsequencial"
       }
+    },
+    queimaEstoque:{
+      field: 'proqueimaestoque',
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+      
+    },
+    colecao:{
+      field: 'procolecao',
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    emAlta:{
+      field: 'proemalta',
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    ofertaEspecial:{
+      field: 'proofertaEspecial',
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
 },
 {
