@@ -2,12 +2,14 @@ import express from 'express';
 import AuthController from '../controllers/AuthController.js';
 import CategoriaController from '../controllers/CategoriaControler.js';
 import MarcaController from '../controllers/MarcaController.js';
+import ProdutoController from '../controllers/ProdutoController.js';
 
 const RotasPublicas = express.Router();
 
 const auth = new AuthController();
 const categorias = new CategoriaController();
 const marcas = new MarcaController();
+const produtos = new ProdutoController();
 /**
  * @swagger
  * /login:
@@ -69,7 +71,8 @@ RotasPublicas.post('/login', (req, res) => auth.login(req, res));
  *       500:
  *         description: Erro interno no servidor
  */
-RotasPublicas.get('/categorias', categorias.listar)
+RotasPublicas.get('/categorias', categorias.listar);
 RotasPublicas.get('/marcas', marcas.listar);
+RotasPublicas.get('/produtos', produtos.listar);
 
 export default RotasPublicas;

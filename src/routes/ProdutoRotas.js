@@ -6,7 +6,6 @@ const produtoController = new ProdutoController;
 
 ProdutoRotas.post('/produto', (req, res) => produtoController.criar(req, res))
 ProdutoRotas.get('/produto/:id', produtoController.consultarPorId)
-ProdutoRotas.get('/produto', produtoController.listar);
 ProdutoRotas.patch('/produto', produtoController.atualizar);
 ProdutoRotas.delete('/produto/:id', produtoController.deletar);
 
