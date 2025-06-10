@@ -18,7 +18,11 @@ class ProdutoController {
                     "preco",
                     "precoPromocional",
                     "linkImagem",
-                    "descricao"
+                    "descricao",
+                    "queimaEstoque",
+                    "colecao",
+                    "emAlta",
+                    "ofertaEspecial"
                 ],
                 order: [["createdAt", "DESC"]],
                 raw: false, // Manter objetos Sequelize para usar getters/setters
