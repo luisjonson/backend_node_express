@@ -5,16 +5,16 @@ import swaggerJsdoc from "swagger-jsdoc"
 import swaggerUi from "swagger-ui-express"
 import cors from 'cors';
 
-// const host = "localhost"
 const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || localhost;
 const app = express();
 
 app.use(cors({
     // porta do seu frontend
-    origin:'http://localhost:5173',
+    origin:`http://${HOST}:5173`,
     // permite cookies
     credentials: true
-}));  // ← habilita CORS para todas as origens
+}));  
 //Faz com que o express aceite as requisições do json.
 app.use(express.json());
 
@@ -27,18 +27,18 @@ const options = {
       version: "1.0.0",
       description: "Uma API simples com documentação Swagger",
       contact: {
-        name: "Desenvolvedor",
+        name: "Luis Lindonjonson",
         email: "dev@exemplo.com",
       },
     },
     servers: [
       {
-        url: `http://localhost:${PORT}`,
+        url: `http://${HOST}:${PORT}`,
         description: "Servidor de desenvolvimento",
       },
     ],
   },
-  apis: ['./src/routes/*.js'], // Caminho para este arquivo
+  apis: ['./src/routes/*.js'],
 }
 
 const specs = swaggerJsdoc(options)
@@ -57,6 +57,6 @@ app.get('/', (request, response) =>{
 
 
 app.listen(PORT,() =>{
-    console.log(`Servidor exercultando na porta http://localhost:${PORT}`)
-    console.log(`Documentação Swagger disponível em: http://localhost:${PORT}/api-docs`)
+    console.log(`Servidor exercultando na porta http://${HOST}:${PORT}`)
+    console.log(`Documentação Swagger disponível em: http://${HOST}:${PORT}/api-docs`)
 })
