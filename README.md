@@ -22,8 +22,28 @@ npm run dev
 npm start
 \`\`\`
 
-## Acessando a documentação
 
+### criar um arquivo .env com as configuraçãoes
+
+APP_KEY_TOKEN= ''
+
+//Informação de conexão com o banco de dados
+DATABASE_HOST= '' 
+DATABASE_USER= ''
+DATABASE_SENHA= ''
+DATABASE= ''
+DATABASE_PORT= ''
+
+SALT_ROUNDS= 
+PARSE_INT_BASE= 
+
+PORT= 3000
+HOST= 192.168.1.6
+
+### Os script MYSQL
+src/ecommece.sql
+
+## Acessando a documentação
 Após iniciar o servidor, acesse:
 - **Documentação Swagger**: http://localhost:3000/api-docs
 - **API Base**: http://localhost:3000
