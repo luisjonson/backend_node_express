@@ -39,6 +39,7 @@ UserModel.init({
 }, {
     tableName: 'tbuser',
     sequelize: connection,
+    timestamps: false
 });
 
 export default UserModel;

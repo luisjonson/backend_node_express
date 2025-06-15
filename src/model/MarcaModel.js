@@ -29,6 +29,7 @@ MarcaModel.init({
 }, {
     tableName: 'tbmarca',
     sequelize: connection,
+    timestamps: false
 });
 
 export default MarcaModel;

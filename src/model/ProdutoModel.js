@@ -80,6 +80,7 @@ ProdutoModel.init({
 {
   tableName: 'tbproduto',
   sequelize: connection,
+  timestamps: false
 });
 
 ProdutoModel.belongsTo(MarcaModel,{

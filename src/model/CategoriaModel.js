@@ -25,6 +25,7 @@ CategoriaModel.init({
 {
   tableName: 'tbcategoria',
   sequelize: connection,
+  timestamps: false
 });
 
 export default CategoriaModel;
