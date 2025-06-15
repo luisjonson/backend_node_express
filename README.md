@@ -58,13 +58,13 @@ Após iniciar o servidor, acesse:
 
 ## Estrutura do projeto
 
-\`\`\`
+`
 ├── index.js        # Arquivo principal
 ├── routes/
 │   └── *.js        # Todas as Rotas 
 ├── package.json    # Dependências
 └── README.md       # Este arquivo
-\`\`\`
+`
 
 ## Tecnologias utilizadas
 
