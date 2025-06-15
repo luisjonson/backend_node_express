@@ -24,7 +24,7 @@ class ProdutoController {
                     "emAlta",
                     "ofertaEspecial"
                 ],
-                order: [["createdAt", "DESC"]],
+                order: [["numsequencial", "DESC"]],
                 raw: false, // Manter objetos Sequelize para usar getters/setters
                 nest: true, // Aninhar objetos relacionados
             })
