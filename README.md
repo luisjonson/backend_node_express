@@ -7,12 +7,9 @@ Esta é uma API RESTfull construída com Node.js e Express, documentada com Swag
 2. Instale as dependências:
 > npm install
 
-## Executando a aplicação
-### Modo desenvolvimento (com nodemon):
-> npm run dev
-
-### Modo produção:
+## Executando a aplicação 
 > npm start
+
 ### criar um arquivo .env com as configuraçãoes
 APP_KEY_TOKEN= ''
 //Informação de conexão com o banco de dados
