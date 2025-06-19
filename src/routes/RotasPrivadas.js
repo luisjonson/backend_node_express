@@ -19,7 +19,8 @@ RotasPrivadas.use((request, response, next) => {
     if(!token) throw response.status(401).json({error: 'Acesso negado.'})
 
     try {
-        jwt.verify(token, process.env.APP_KEY_TOKEN)
+        const decoded = jwt.verify(token, process.env.APP_KEY_TOKEN)
+        request.usuario = decoded;
         
     } catch (jsonwebtokenError) {
         return response.status(403).json({
@@ -35,6 +36,10 @@ RotasPrivadas.use(TagsRotas);
 RotasPrivadas.use(RotasCategorias);
 RotasPrivadas.use(MarcaRotas);
 RotasPrivadas.use(ProdutoRotas);
+RotasPrivadas.get('/auth/usuario-logado', (req, res) => {
+    const { username, email } = req.usuario;
+    res.json({ nome: username, email });
+});
 
 
 export default RotasPrivadas
