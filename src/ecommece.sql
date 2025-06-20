@@ -122,3 +122,19 @@ VALUES
 ('Garrafa Térmica Inox 1L', 79.90, 'Mantém líquidos frios por até 24h.', 'turn0image1', 0, 14, 5, 1, 0, 1, 0),
 ('Kit Escritório SmartDesk', 499.90, 'Suporte para laptop + base ventilada.', 'turn0image2', 1, 15, 8, 0, 1, 0, 1);
 
+-------------------------userPadrao----------------------------
+
+INSERT INTO `ecommece`.`tbuser`
+(
+`usenome`,
+`useemail`,
+`usesenha`,
+`usetermo`,
+`useativo`)
+VALUES
+('admin',
+'teste@teste',
+'$2b$10$mbMqIUGrcjindgZqJzvG7.ayW9y57nEiuWz40jBlYn0hvitqC3G6C',
+1,
+1
+);
