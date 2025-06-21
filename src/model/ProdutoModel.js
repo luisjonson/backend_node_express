@@ -46,7 +46,7 @@ ProdutoModel.init({
         key:"marnumsequencial"
       }
     },
-    categotia:{
+    categoria:{
       field:'procategoria',
       type:DataTypes.INTEGER,
       allowNull:false,
@@ -89,8 +89,8 @@ ProdutoModel.belongsTo(MarcaModel,{
 })
 
 ProdutoModel.belongsTo(CategoriaModel,{
-  foreignKey: "categotia",
-  as: "categotia_id",
+  foreignKey: "categoria",
+  as: "categoria_id",
 })
 
 export default ProdutoModel;

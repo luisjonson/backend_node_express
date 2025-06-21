@@ -1,4 +1,5 @@
 import MarcaModel from '../model/MarcaModel.js';
+import CategoriaModel from '../model/CategoriaModel.js';
 import ProdutoModel from '../model/ProdutoModel.js';
 
 class ProdutoController {
@@ -9,7 +10,12 @@ class ProdutoController {
                     {
                         model: MarcaModel,
                         as: "marca_id",
-                        attributes: ["numsequencial", "nome", "descricao"], // Campos específicos
+                        attributes: ["numsequencial", "nome", "descricao", "ativo"],
+                    },
+                    {
+                        model: CategoriaModel,
+                        as: "categoria_id",
+                        attributes: ["numsequencial", "nome", "ativo"],
                     },
                 ],
                 attributes: [
@@ -37,7 +43,7 @@ class ProdutoController {
         } catch (error) {
             console.error("Erro ao listar produtos:", error)
             return response.status(500).json({
-                success: falso,
+                success: false,
                 message: "Erro Interno do servidor",
             })
         }
