@@ -28,7 +28,9 @@ class ProdutoController {
                     "queimaEstoque",
                     "colecao",
                     "emAlta",
-                    "ofertaEspecial"
+                    "ofertaEspecial",
+                    "genero",
+                    "estadoProduto"
                 ],
                 order: [["numsequencial", "DESC"]],
                 raw: false, // Manter objetos Sequelize para usar getters/setters
