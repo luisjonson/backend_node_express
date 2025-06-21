@@ -37,8 +37,8 @@ ProdutoModel.init({
       type: DataTypes.STRING,
       allowNull: false
     },
-    stadoProduto:{
-      field: 'stadoproduto',
+    estadoProduto:{
+      field: 'proestadoproduto',
       type: DataTypes.STRING,
       allowNull: false
     },
