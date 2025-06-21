@@ -32,6 +32,16 @@ ProdutoModel.init({
         type: DataTypes.STRING,
         allowNull: false
     },
+    genero:{
+      field: 'progenero',
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    stadoProduto:{
+      field: 'stadoproduto',
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     precoPromocional: {
       field: 'proprecopromocional',
       type: DataTypes.DECIMAL(10, 2), // Até 99.999.999,99
