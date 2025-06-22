@@ -101,11 +101,12 @@ class ProdutoController {
             const dados = await ProdutoModel.create(body);
             return response.status(201).json({
                 success: true,
-                data: dados,
+                data: dados.data,
                 message: `Produto cadastrado com sucesso`
             })
 
         } catch (error) {
+            console.log("Erro ao cadastrar produto:", error);
             throw response.status(404).json({
                 error: "Erro ao cadastrar produto",
                 message: error.message || "Erro ao cadastrar produto"
