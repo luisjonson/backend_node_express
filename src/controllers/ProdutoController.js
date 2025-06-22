@@ -98,14 +98,17 @@ class ProdutoController {
     async criar(request, response) {
         try {
             const body = request.body;
-            await ProdutoModel.create(body);
+            const dados = await ProdutoModel.create(body);
             return response.status(201).json({
+                success: true,
+                data: dados,
                 message: `Produto cadastrado com sucesso`
             })
 
         } catch (error) {
-            throw response.status(500).json({
-                error: error.message
+            throw response.status(404).json({
+                error: "Erro ao cadastrar produto",
+                message: error.message || "Erro ao cadastrar produto"
             });
         }
     }
