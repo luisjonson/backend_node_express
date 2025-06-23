@@ -21,7 +21,8 @@ DATABASE_PORT= ''
 SALT_ROUNDS=
 PARSE_INT_BASE=
 PORT= 3000
-HOST= 0.0.0.0
+HOST= localhost
+HOST_FRONT=localhost
 ### Os script MYSQL
 > src/ecommece.sql
 ## Acessando a documentação

@@ -7,11 +7,12 @@ import cors from 'cors';
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || localhost;
+const HOST_FRONT = process.env.HOST_FRONT || localhost;
 const app = express();
 
 app.use(cors({
     // porta do seu frontend
-    origin:`http://${HOST}:5173`,
+    origin:`http://${HOST_FRONT}:5173`,
     // permite cookies
     credentials: true
 }));  
